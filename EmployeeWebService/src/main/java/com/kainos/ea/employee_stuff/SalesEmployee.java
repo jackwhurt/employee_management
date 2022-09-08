@@ -6,6 +6,8 @@ public class SalesEmployee {
     private short number;
     private int salesTotal;
 
+    private float commission;
+
     public short getNumber() {
         return number;
     }
@@ -30,12 +32,23 @@ public class SalesEmployee {
         return salesTotal;
     }
 
+    public void setCommission(float commission){
+        this.commission = commission;
+    }
+
+    public float getCommission(){
+        return commission;
+    }
+
     public SalesEmployee()
     {
+
     }
-    public SalesEmployee(short number, String name, int salesTotal) {
+
+    public SalesEmployee(short number, String name, float commission, int salesTotal) {
         setNumber(number);
         setName(name);
+        setCommission(commission);
         setSalesTotal(salesTotal);
     }
 
