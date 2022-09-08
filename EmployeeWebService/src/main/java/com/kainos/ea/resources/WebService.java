@@ -2,6 +2,7 @@ package com.kainos.ea.resources;
 
 import com.kainos.ea.database.DatabaseEmployee;
 import com.kainos.ea.database.DepartmentEmployee;
+import com.kainos.ea.database.FinanceReport;
 import com.kainos.ea.employee_stuff.Employee;
 
 import javax.ws.rs.GET;
@@ -33,6 +34,17 @@ public class WebService {
         return emps;
 
     }
+
+    @GET
+    @Path("/getFinanceReport")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<String> getFinanceReport() {
+
+        List<String> emps = FinanceReport.getFinanceReport();
+        return emps;
+
+    }
+
 
 
 }

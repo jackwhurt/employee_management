@@ -81,6 +81,10 @@ public class Employee {
         this.department = department;
     }
 
+    public int calcPay(){
+        return getSalary() / 12;
+    }
+
     @Override
     public String toString(){
         String message =
