@@ -1,9 +1,9 @@
 package com.kainos.ea.resources;
 
 import com.kainos.ea.database.DatabaseEmployee;
-import com.kainos.ea.database.DepartmentEmployee;
-import com.kainos.ea.database.FinanceReport;
+import com.kainos.ea.database.HighestSalesEmployee;
 import com.kainos.ea.employee_stuff.Employee;
+import com.kainos.ea.employee_stuff.SalesEmployee;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -24,27 +24,14 @@ public class WebService {
 
     }
 
-
     @GET
-    @Path("/getEmployeesDepartment/{msg}")
+    @Path("/getHighestSales")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Employee> getEmployeeDepartment(@PathParam("msg") String department) {
+    public List<SalesEmployee> getHighestSalesEmployees() {
 
-        List<Employee> emps = DepartmentEmployee.getEmployeeDepartment(department);
-        return emps;
+        return HighestSalesEmployee.getHighestSalesEmployee ();
 
     }
-
-    @GET
-    @Path("/getFinanceReport")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<String> getFinanceReport() {
-
-        List<String> emps = FinanceReport.getFinanceReport();
-        return emps;
-
-    }
-
 
 
 }
