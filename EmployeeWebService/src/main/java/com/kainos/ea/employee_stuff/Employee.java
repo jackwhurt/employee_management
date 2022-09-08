@@ -11,13 +11,14 @@ public class Employee {
 
     private String department;
 
-    public Employee(short number, String name, String address, String nin, String bankAccount, int salary) {
+    public Employee(short number, String name, String address, String nin, String bankAccount, int salary, String department) {
         setNumber(number);
         setName(name);
         setAddress(address);
         setNin(nin);
         setBankAccount(bankAccount);
         setSalary(salary);
+        setDepartment(department);
     }
 
     public Employee(short number, int salary, String name) {

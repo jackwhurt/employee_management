@@ -1,5 +1,6 @@
 package com.kainos.ea;
 
+import com.kainos.ea.database.DatabaseEmployee;
 import com.kainos.ea.resources.WebService;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -26,6 +27,8 @@ public class WebServiceApplication extends Application<WebServiceConfiguration> 
                     final Environment environment) {
         // TODO: implement application
         environment.jersey().register(new WebService());
+
+
     }
 
 }
