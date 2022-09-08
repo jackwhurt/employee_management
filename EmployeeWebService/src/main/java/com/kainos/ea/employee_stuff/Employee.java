@@ -1,5 +1,8 @@
 package com.kainos.ea.employee_stuff;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Employee {
 
     private short number;
@@ -11,7 +14,11 @@ public class Employee {
 
     private String department;
 
-    public Employee(short number, String name, String address, String nin, String bankAccount, int salary, String department) {
+    @JsonCreator
+    public Employee(@JsonProperty("number") short number,@JsonProperty("name") String name,
+                    @JsonProperty("address") String address,@JsonProperty("nin") String nin,
+                    @JsonProperty("bankAccount")  String bankAccount,@JsonProperty("salary") int salary,
+                    @JsonProperty("department")  String department) {
         setNumber(number);
         setName(name);
         setAddress(address);
