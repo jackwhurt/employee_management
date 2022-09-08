@@ -30,7 +30,6 @@ public class WebService {
     @Consumes(MediaType.APPLICATION_JSON)
     public void getEmployees(Employee employees) {
 
-
         List<Employee> emps = new ArrayList<>();
         emps.add(employees);
         EnterEmployees.enterEmployees(emps);
