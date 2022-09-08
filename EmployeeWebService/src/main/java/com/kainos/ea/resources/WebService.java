@@ -1,6 +1,7 @@
 package com.kainos.ea.resources;
 
 import com.kainos.ea.database.DatabaseEmployee;
+import com.kainos.ea.database.DepartmentEmployee;
 import com.kainos.ea.employee_stuff.Employee;
 
 import javax.ws.rs.GET;
@@ -18,6 +19,17 @@ public class WebService {
     public List<Employee> getEmployees() {
 
         List<Employee> emps = DatabaseEmployee.getEmployees();
+        return emps;
+
+    }
+
+
+    @GET
+    @Path("/getEmployeesDepartment/{msg}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Employee> getEmployeeDepartment(@PathParam("msg") String department) {
+
+        List<Employee> emps = DepartmentEmployee.getEmployeeDepartment(department);
         return emps;
 
     }
