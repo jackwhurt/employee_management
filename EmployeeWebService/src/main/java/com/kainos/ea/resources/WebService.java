@@ -14,4 +14,6 @@ public class WebService {
     public String getMsg(@PathParam("msg") String message) {
         return "Hello from a RESTful Web service: " + message;
     }
+
+
 }
