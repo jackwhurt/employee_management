@@ -28,11 +28,9 @@ public class WebService {
     @POST
     @Path("/addEmployees")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void getEmployees(Employee employees) {
+    public void getEmployees(List<Employee> employees) {
 
-        List<Employee> emps = new ArrayList<>();
-        emps.add(employees);
-        EnterEmployees.enterEmployees(emps);
+        EnterEmployees.enterEmployees(employees);
 
     }
 
