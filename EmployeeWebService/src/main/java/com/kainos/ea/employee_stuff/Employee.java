@@ -18,6 +18,9 @@ public class Employee {
         setSalary(salary);
     }
 
+    public Employee(short number, int salary, String name) {
+    }
+
 
     public short getNumber() {
         return number;
