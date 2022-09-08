@@ -19,12 +19,20 @@ public class EnterEmployees {
 
         String values = "";
 
-        for(Employee employee: employeesToAdd) {
+        values = "('" + employeesToAdd.get(0).getName() + "', '" + employeesToAdd.get(0).getAddress() + "', '" + employeesToAdd.get(0).getNin() +
+                "', '" + employeesToAdd.get(0).getBankAccount() + "', " +employeesToAdd.get(0).getSalary() + ", '" + employeesToAdd.get(0).getDepartment() + "')";
 
-            values = values + ",(" + employee.getName() + ", " + employee.getAddress() + ", " + employee.getNin() +
-                    ", " + employee.getBankAccount() + ", " +employee.getSalary() + ", " + employee.getDepartment() + ")";
+        if(employeesToAdd.size() > 1) {
+
+            for (Employee employee : employeesToAdd) {
+
+                values = values + ",('" + employee.getName() + "', '" + employee.getAddress() + "', '" + employee.getNin() +
+                        "', '" + employee.getBankAccount() + "', " + employee.getSalary() + ", '" + employee.getDepartment() + "')";
+
+            }
 
         }
+        values += ";";
 
         try (
                 Connection myConnection = getConnection();
@@ -33,8 +41,8 @@ public class EnterEmployees {
             if (myConnection == null)
                 throw new SQLException("Database connection null");
 
-            rs = st.executeQuery("insert into(EmployeeName,Address,NIN,BankAccountNo,Salary,Department)" +
-                    " Employee_JackH values " + values);
+            st.executeUpdate("insert into employee_JackH(EmployeeName,Address,NIN,BankAccountNo,Salary,Department)" +
+                    " values " + values);
 
 //            while (rs.next()) {
 //                Employee dbEmp = new Employee((short) rs.getInt("EmployeeNo"),
