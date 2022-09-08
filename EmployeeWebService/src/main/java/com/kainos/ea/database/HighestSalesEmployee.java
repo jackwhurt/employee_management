@@ -7,28 +7,35 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.kainos.ea.database.Database.getConnection;
 
 public class HighestSalesEmployee {
 
-    public static SalesEmployee getHighestSalesEmployee(){
+    public static List<SalesEmployee> getHighestSalesEmployee(){
 
         ResultSet rs = null;
-        SalesEmployee dbEmp = null;
+        List<SalesEmployee> bigEmps = new ArrayList<> ();
+
         try (Connection myConnection = getConnection();
              Statement st = (myConnection == null) ? null : myConnection.createStatement()) {
 
             if (myConnection == null)
                 throw new SQLException ("Database connection null");
 
+            rs = st.executeQuery ("select * from SalesEmployee_JackH where SalesTotal IN (select max(SalesTotal) from SalesEmployee_JackH);");
+
             while (rs.next()) {
-                rs = st.executeQuery ("select * from SalesEmployee_JackH where SalesTotal IN (select max(SalesTotal) from SalesEmployee_JackH);");
-                dbEmp = new SalesEmployee ((short) rs.getInt ("EmployeeNo"),
+                SalesEmployee dbEmp = new SalesEmployee ((short) rs.getInt ("EmployeeNo"),
                         rs.getString ("EmployeeName"),
                         rs.getInt ("Commission"),
                         rs.getInt ("SalesTotal"));
+                bigEmps.add(dbEmp);
             }
+
+
 
         } catch (SQLException ex) {
 
@@ -36,6 +43,6 @@ public class HighestSalesEmployee {
 
         }
 
-        return dbEmp;
+        return bigEmps;
     }
 }

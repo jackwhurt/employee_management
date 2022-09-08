@@ -27,7 +27,7 @@ public class WebService {
     @GET
     @Path("/getHighestSales")
     @Produces(MediaType.APPLICATION_JSON)
-    public SalesEmployee getHighestSalesEmployees() {
+    public List<SalesEmployee> getHighestSalesEmployees() {
 
         return HighestSalesEmployee.getHighestSalesEmployee ();
 
