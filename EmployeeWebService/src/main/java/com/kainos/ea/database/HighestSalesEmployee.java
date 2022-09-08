@@ -22,7 +22,7 @@ public class HighestSalesEmployee {
             if (myConnection == null)
                 throw new SQLException ("Database connection null");
 
-            rs = st.executeQuery("select * from salesEmployee_JackH where SalesTotal IN (select max(SalesTotal) from salesEmployee_JackH);");
+            rs = st.executeQuery("select * from SalesEmployee_JackH where SalesTotal IN (select max(SalesTotal) from SalesEmployee_JackH);");
 
                         dbEmp.setNumber((short) rs.getInt("EmployeeNo"));
                         dbEmp.setName (rs.getString("EmployeeName"));
