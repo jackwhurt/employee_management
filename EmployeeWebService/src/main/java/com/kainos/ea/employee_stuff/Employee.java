@@ -81,12 +81,12 @@ public class Employee {
         this.department = department;
     }
 
-
+    @Override
     public String toString(){
         String message =
                 String.format("Employee %d: %s, £%,.2f. "
                                 ,
-                        getNumber(), getName(), getSalary());
+                        getNumber(), getName(), (float) getSalary());
         return message;
     }
 }

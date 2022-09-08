@@ -15,7 +15,7 @@ import static com.kainos.ea.database.Database.getConnection;
 public class DatabaseEmployee {
 
     private static Connection myConnection;
-    public List<Employee> getEmployees() {
+    public static List<Employee> getEmployees() {
 
         List<Employee> bigEmps = new ArrayList<>();
         ResultSet rs = null;
@@ -26,12 +26,11 @@ public class DatabaseEmployee {
             if (myConnection == null)
                 throw new SQLException("Database connection null");
 
-            rs = st.executeQuery(
-                    "select * from Employee_JackH");
+            rs = st.executeQuery("select * from employee_JackH");
 
             while (rs.next()) {
                 Employee dbEmp = new Employee((short) rs.getInt("EmployeeNo"),
-                        rs.getString("name"), rs.getString("Address"),
+                        rs.getString("EmployeeName"), rs.getString("Address"),
                         rs.getString("NIN"),rs.getString("BankAccountNo"),
                         rs.getInt("Salary"), rs.getString("Department"));
                 bigEmps.add(dbEmp);

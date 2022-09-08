@@ -34,7 +34,7 @@ public class Database {
                 throw new IllegalArgumentException(
                         "Properties file must exist and must contain " + "user, password, and host properties.");
             myConnection = DriverManager.getConnection("jdbc:mysql://" + host +
-                    "/employees?useSSL=false", user, password);
+                    "/pubs?useSSL=false", user, password);
             return myConnection;
 
         } catch (Exception e) {
