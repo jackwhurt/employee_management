@@ -16,7 +16,7 @@ public class HighestSalesEmployee {
 
     public static List<SalesEmployee> getHighestSalesEmployee(){
 
-        ResultSet rs = null;
+        ResultSet rs;
         List<SalesEmployee> bigEmps = new ArrayList<> ();
 
         try (Connection myConnection = getConnection();
@@ -30,7 +30,7 @@ public class HighestSalesEmployee {
             while (rs.next()) {
                 SalesEmployee dbEmp = new SalesEmployee ((short) rs.getInt ("EmployeeNo"),
                         rs.getString ("EmployeeName"),
-                        rs.getInt ("Commission"),
+                        rs.getFloat ("Commission"),
                         rs.getInt ("SalesTotal"));
                 bigEmps.add(dbEmp);
             }
