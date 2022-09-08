@@ -1,7 +1,6 @@
 package com.kainos.ea.resources;
 
-import com.kainos.ea.database.DatabaseEmployee;
-import com.kainos.ea.database.HighestSalesEmployee;
+import com.kainos.ea.database.*;
 import com.kainos.ea.employee_stuff.Employee;
 import com.kainos.ea.employee_stuff.SalesEmployee;
 
@@ -12,8 +11,6 @@ import javax.ws.rs.GET;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.kainos.ea.database.DatabaseEmployee;
-import com.kainos.ea.database.DepartmentEmployee;
-import com.kainos.ea.database.FinanceReport;
 import com.kainos.ea.employee_stuff.Employee;
 
 import javax.ws.rs.*;
@@ -35,6 +32,16 @@ public class WebService {
         return emps;
 
     }
+
+    @POST
+    @Path("/addEmployees")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void getEmployees(List<Employee> employees) {
+
+        EnterEmployees.enterEmployees(employees);
+
+    }
+
 
 
     @GET
