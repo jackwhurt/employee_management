@@ -9,6 +9,8 @@ public class Employee {
     private String bankAccount;
     private int salary;
 
+    private String department;
+
     public Employee(short number, String name, String address, String nin, String bankAccount, int salary) {
         setNumber(number);
         setName(name);
@@ -67,6 +69,13 @@ public class Employee {
         this.salary = salary;
     }
 
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
 
     public String toString(){
