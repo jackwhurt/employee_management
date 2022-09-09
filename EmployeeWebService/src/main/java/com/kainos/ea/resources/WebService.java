@@ -42,8 +42,6 @@ public class WebService {
 
     }
 
-
-
     @GET
     @Path("/getEmployeesDepartment/{msg}")
     @Produces(MediaType.APPLICATION_JSON)
