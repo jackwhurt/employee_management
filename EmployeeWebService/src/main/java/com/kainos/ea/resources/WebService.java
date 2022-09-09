@@ -22,7 +22,6 @@ import java.util.List;
 @Path("/api")
 public class WebService {
 
-    private static final ObjectMapper mapper = new ObjectMapper();
     @GET
     @Path("/getEmployees")
     @Produces(MediaType.APPLICATION_JSON)
@@ -41,8 +40,6 @@ public class WebService {
         EnterEmployees.enterEmployees(employees);
 
     }
-
-
 
     @GET
     @Path("/getEmployeesDepartment/{msg}")
