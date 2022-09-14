@@ -2,10 +2,7 @@ package com.kainos.ea.database;
 
 import com.kainos.ea.model.City;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,19 +10,17 @@ import java.util.List;
 public class GetCities {
 
     private static Connection myConnection;
-    public static List<City> getCities() {
+    public static List<City> execute() {
 
         List<City> cities = new ArrayList<>();
         ResultSet rs = null;
         Database myDatabase = new Database();
+        String query = "select * from city";
 
         try (Connection myConnection = myDatabase.getConnection();
-             Statement st = (myConnection == null) ? null : myConnection.createStatement()) {
+             PreparedStatement preparedQuery = myConnection.prepareStatement(query)) {
 
-            if (myConnection == null)
-                throw new SQLException("Database connection null");
-
-            rs = st.executeQuery("select * from city");
+            rs = preparedQuery.executeQuery();
 
             while (rs.next()) {
                 City city = new City((short) rs.getInt("ID"),

@@ -65,7 +65,25 @@ public class WebService {
     @Produces(MediaType.APPLICATION_JSON)
     public List<City> getCities() {
 
-        return GetCities.getCities();
+        return GetCities.execute();
+
+    }
+
+    @POST
+    @Path("/enterCities")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<String> enterCities(List<City> cities) {
+
+        return EnterCities.execute(cities);
+
+    }
+
+    @POST
+    @Path("/enterCity")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String enterCities(City city) {
+
+        return EnterCity.execute(city);
 
     }
 
