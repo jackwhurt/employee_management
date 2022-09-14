@@ -1,6 +1,7 @@
 package com.kainos.ea.resources;
 
 import com.kainos.ea.database.*;
+import com.kainos.ea.employee_stuff.City;
 import com.kainos.ea.employee_stuff.Employee;
 import com.kainos.ea.employee_stuff.SalesEmployee;
 
@@ -67,6 +68,15 @@ public class WebService {
     public List<SalesEmployee> getHighestSales() {
 
         return HighestSalesEmployee.getHighestSalesEmployee ();
+
+    }
+
+    @GET
+    @Path("/getCities")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<City> getCities() {
+
+        return GetCities.getCities();
 
     }
 
