@@ -1,6 +1,6 @@
 package com.kainos.ea.database;
 
-import com.kainos.ea.employee_stuff.Employee;
+import com.kainos.ea.model.Employee;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,9 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalDouble;
-
-import static com.kainos.ea.database.Database.getConnection;
 
 public class FinanceReport {
 
@@ -21,8 +18,9 @@ public class FinanceReport {
         List<Employee> bigEmps = new ArrayList<>();
         List<String> financeR = new ArrayList<>();
         ResultSet rs = null;
+        Database myDatabase = new Database();
 
-        try (Connection myConnection = getConnection();
+        try (Connection myConnection = myDatabase.getConnection();
              Statement st = (myConnection == null) ? null : myConnection.createStatement()) {
 
             if (myConnection == null)
@@ -36,7 +34,7 @@ public class FinanceReport {
                         rs.getString("EmployeeName"), rs.getString("Address"),
                         rs.getString("NIN"),rs.getString("BankAccountNo"),
                         rs.getInt("Salary"), rs.getString("Department"));
-                financeR.add(String.format(dbEmp.getNumber() + ": " + dbEmp.getName() + ", £%,.2f." , (float)dbEmp.calcPay()));
+                financeR.add(String.format(dbEmp.getNumber() + ": " + dbEmp.getName() + ", £%,.2f." , (float)dbEmp.getSalary()/12));
                 bigEmps.add(dbEmp);
             }
 

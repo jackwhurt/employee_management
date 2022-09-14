@@ -1,7 +1,6 @@
 package com.kainos.ea.database;
 
-import com.kainos.ea.employee_stuff.Employee;
-import com.kainos.ea.employee_stuff.SalesEmployee;
+import com.kainos.ea.model.SalesEmployee;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,16 +9,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.kainos.ea.database.Database.getConnection;
-
 public class HighestSalesEmployee {
 
     public static List<SalesEmployee> getHighestSalesEmployee(){
 
         ResultSet rs;
         List<SalesEmployee> bigEmps = new ArrayList<> ();
+        Database myDatabase = new Database();
 
-        try (Connection myConnection = getConnection();
+        try (Connection myConnection = myDatabase.getConnection();
              Statement st = (myConnection == null) ? null : myConnection.createStatement()) {
 
             if (myConnection == null)

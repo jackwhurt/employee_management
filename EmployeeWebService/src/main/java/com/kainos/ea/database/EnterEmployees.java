@@ -1,6 +1,6 @@
 package com.kainos.ea.database;
 
-import com.kainos.ea.employee_stuff.Employee;
+import com.kainos.ea.model.Employee;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,14 +9,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.kainos.ea.database.Database.getConnection;
 
 public class EnterEmployees {
 
     public static List<Employee> enterEmployees(List<Employee> employeesToAdd) {
         List<Employee> bigEmps = new ArrayList<>();
         ResultSet rs = null;
-
+        Database myDatabase = new Database();
         String values = "";
 
         values = "('" + employeesToAdd.get(0).getName() + "', '" + employeesToAdd.get(0).getAddress() + "', '" + employeesToAdd.get(0).getNin() +
@@ -35,7 +34,7 @@ public class EnterEmployees {
         values += ";";
 
         try (
-                Connection myConnection = getConnection();
+                Connection myConnection = myDatabase.getConnection();
                 Statement st = (myConnection == null) ? null : myConnection.createStatement()) {
 
             if (myConnection == null)

@@ -1,6 +1,6 @@
 package com.kainos.ea.database;
 
-import com.kainos.ea.model.Employee;
+import com.kainos.ea.model.City;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,13 +9,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DepartmentEmployee {
+
+public class GetCities {
 
     private static Connection myConnection;
-    public static String department;
-    public static List<Employee> getEmployeeDepartment(String department) {
+    public static List<City> getCities() {
 
-        List<Employee> bigEmps = new ArrayList<>();
+        List<City> cities = new ArrayList<>();
         ResultSet rs = null;
         Database myDatabase = new Database();
 
@@ -25,14 +25,13 @@ public class DepartmentEmployee {
             if (myConnection == null)
                 throw new SQLException("Database connection null");
 
-            rs = st.executeQuery("select * from employee_JackH where department = '" + department + "';");
+            rs = st.executeQuery("select * from city");
 
             while (rs.next()) {
-                Employee dbEmp = new Employee((short) rs.getInt("EmployeeNo"),
-                        rs.getString("EmployeeName"), rs.getString("Address"),
-                        rs.getString("NIN"),rs.getString("BankAccountNo"),
-                        rs.getInt("Salary"), rs.getString("Department"));
-                bigEmps.add(dbEmp);
+                City city = new City((short) rs.getInt("ID"),
+                        rs.getString("Name"), rs.getString("CountryCode"),
+                        rs.getString("District"),rs.getInt("Population"));
+                cities.add(city);
             }
 
         } catch (SQLException ex) {
@@ -41,7 +40,7 @@ public class DepartmentEmployee {
 
         }
 
-        return bigEmps;
+        return cities;
 
     }
 }

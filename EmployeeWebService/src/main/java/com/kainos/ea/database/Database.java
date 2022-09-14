@@ -1,18 +1,14 @@
 package com.kainos.ea.database;
 
-import org.hibernate.validator.internal.constraintvalidators.bv.notempty.NotEmptyValidatorForArraysOfLong;
-
 import java.io.FileInputStream;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.OptionalDouble;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.Properties;
 
 public class Database {
 
-    private static Connection myConnection;
-    static Connection getConnection() {
+    private Connection myConnection;
+     Connection getConnection() {
 
         String user;
         String password;
@@ -34,7 +30,7 @@ public class Database {
                 throw new IllegalArgumentException(
                         "Properties file must exist and must contain " + "user, password, and host properties.");
             myConnection = DriverManager.getConnection("jdbc:mysql://" + host +
-                    "/pubs?useSSL=false", user, password);
+                    "/world_JackH?useSSL=false", user, password);
             return myConnection;
 
         } catch (Exception e) {

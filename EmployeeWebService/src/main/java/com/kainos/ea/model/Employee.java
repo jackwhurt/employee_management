@@ -1,4 +1,4 @@
-package com.kainos.ea.employee_stuff;
+package com.kainos.ea.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

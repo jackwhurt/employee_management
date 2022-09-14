@@ -1,4 +1,4 @@
-package com.kainos.ea.employee_stuff;
+package com.kainos.ea.model;
 
 public class SalesEmployee {
 

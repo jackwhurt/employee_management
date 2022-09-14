@@ -1,8 +1,8 @@
-package test.com.kainos.ea.database; 
+package test.com.kainos.ea.database;
 
-import org.junit.Test; 
-import org.junit.Before; 
-import org.junit.After; 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /** 
 * EnterEmployees Tester. 

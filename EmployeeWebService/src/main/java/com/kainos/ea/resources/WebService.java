@@ -1,22 +1,12 @@
 package com.kainos.ea.resources;
 
 import com.kainos.ea.database.*;
-import com.kainos.ea.employee_stuff.Employee;
-import com.kainos.ea.employee_stuff.SalesEmployee;
-
-import javax.ws.rs.GET;
-
-
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.kainos.ea.database.DatabaseEmployee;
-import com.kainos.ea.employee_stuff.Employee;
+import com.kainos.ea.model.City;
+import com.kainos.ea.model.Employee;
+import com.kainos.ea.model.SalesEmployee;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 import java.util.List;
 
 @Path("/api")
@@ -67,6 +57,15 @@ public class WebService {
     public List<SalesEmployee> getHighestSales() {
 
         return HighestSalesEmployee.getHighestSalesEmployee ();
+
+    }
+
+    @GET
+    @Path("/getCities")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<City> getCities() {
+
+        return GetCities.getCities();
 
     }
 
